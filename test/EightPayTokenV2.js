@@ -9,7 +9,7 @@ const AddressZero = ethers.constants.AddressZero;
 const deployWithoutLGE = deployments.createFixture(async ({ deployments, ethers }, options) => {
   await deployments.fixture();
   const [deployer, holder5, holder10, holder20, holder40, treasury, pairAddress, newOwner] = await ethers.getSigners();
-  const pad = await ethers.getContract("EightPayToken");
+  const pad = await ethers.getContract("EightPayTokenV2");
 
   hre.network.provider.request({
     method: "hardhat_impersonateAccount",
@@ -33,7 +33,7 @@ const deployWithoutLGE = deployments.createFixture(async ({ deployments, ethers 
 const deployWithLGE = deployments.createFixture(async ({ deployments, ethers }, options) => {
   await deployments.fixture();
   const [deployer, holder5, holder10, holder20, holder40, treasury, pairAddress, newOwner] = await ethers.getSigners();
-  const pad = await ethers.getContract("EightPayToken");
+  const pad = await ethers.getContract("EightPayTokenV2");
 
 
   const durations = [1200];
@@ -52,7 +52,7 @@ const deployWithLGE = deployments.createFixture(async ({ deployments, ethers }, 
 const deployWithTokenHolders = deployments.createFixture(async ({ deployments, ethers }, options) => {
   await deployments.fixture();
   const [deployer, holder5, holder10, holder20, holder40, treasury, pairAddress, newOwner] = await ethers.getSigners();
-  const pad = await ethers.getContract("EightPayToken");
+  const pad = await ethers.getContract("EightPayTokenV2");
 
   const durations = [1200];
   const amountsMax = [tokens("10000")];
@@ -96,16 +96,16 @@ async function increaseTime(n) {
   });
 }
 
-describe("EightPayToken", () => {
+describe("EightPayTokenV2", () => {
   describe("Deployment", () => {
     it("name should be 8PAY Network", async () => {
       const { pad } = await deployWithLGE();
-      expect(await pad.name()).to.be.equal("8PAY Network");
+      expect(await pad.name()).to.be.equal("8PAY Network v2");
     });
 
     it("symbol should be 8PAY", async () => {
       const { pad } = await deployWithLGE();
-      expect(await pad.symbol()).to.be.equal("8PAY");
+      expect(await pad.symbol()).to.be.equal("8PAY v2");
     });
 
     it("deployer should be the owner", async () => {

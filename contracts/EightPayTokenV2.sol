@@ -6,7 +6,7 @@ import { SafeMath } from "./SafeMath.sol";
 import { Ownable } from "./Ownable.sol";
 import { LGEWhitelisted } from "./LGEWhitelisted.sol";
 
-contract EightPayToken is Context, IBEP20, Ownable, LGEWhitelisted {  
+contract EightPayTokenV2 is Context, IBEP20, Ownable, LGEWhitelisted {  
     using SafeMath for uint256;
 
     mapping (address => uint256) private _balances;
@@ -18,8 +18,8 @@ contract EightPayToken is Context, IBEP20, Ownable, LGEWhitelisted {
     string private _name;
 
     constructor() public {
-        _name = "8PAY Network";
-        _symbol = "8PAY";
+        _name = "8PAY Network v2";
+        _symbol = "8PAY v2";
         _decimals = 18;
         _totalSupply = 88888888 * 10 ** 18;
         _balances[_msgSender()] = _totalSupply;

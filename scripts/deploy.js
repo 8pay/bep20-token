@@ -8,7 +8,7 @@ async function main() {
   const owner = process.env.OWNER;
   const whitelister = process.env.WHITELISTER;
 
-  const EightPayToken = await hre.ethers.getContractFactory("EightPayToken");
+  const EightPayToken = await hre.ethers.getContractFactory("EightPayTokenV2");
   const eightPayToken = await EightPayToken.deploy();
 
   await eightPayToken.deployed();
@@ -16,8 +16,8 @@ async function main() {
   await eightPayToken.transfer(owner, tokens('88888888'));
   await eightPayToken.transferOwnership(owner);
   await eightPayToken.transferWhitelister(whitelister);
-  
-  console.log("EightPayToken deployed to:", eightPayToken.address);
+
+  console.log("EightPayTokenV2 deployed to:", eightPayToken.address);
 }
 
 main()
